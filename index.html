@@ -44,7 +44,7 @@
 <body class="container">
     <div class="row">
         <div class="col-12 pr-0">
-            <img width="100%" height="200px" src="images/1674208476889.jfif"/>
+            <img width="100%" height="150px" src="images/1674208476889.jpg" />
         </div>
     </div>
     <div class="row">
@@ -92,7 +92,8 @@
                         <li>Amazon Web Services, Azure, Entity Framework, Okta</li>
                     </ul>
                     <p>
-                        I welcome and appreciate any feedback and suggestions for this website. My strategy is to document some of my experiences for reference and to create a full,
+                        I welcome and appreciate any feedback and suggestions for this website. My strategy is to
+                        document some of my experiences for reference and to create a full,
                         concrete and easy process for everyone.
                     </p>
                     <p>
@@ -246,9 +247,9 @@
             $("#txtKeyword").val("");
             var oldCategory = $("a.active").attr('category');
             var newCategory = $(this).attr('category');
+            $(".list-group-item").removeClass("active");
 
-            if (oldCategory != newCategory) {
-                $(".list-group-item").removeClass("active");
+            if (oldCategory != newCategory || about == 'true') {
                 $(this).addClass("active");
             }
 
