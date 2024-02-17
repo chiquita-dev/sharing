@@ -57,30 +57,17 @@
             display: none !important;
         }
 
-        .menu {
-            display: block;
-        }
-
-        .container-max {
-            
-        }
-
-        .mr-max {
-
+        .navbar-brand {
+            display: none;
         }
 
         @media (max-width: 900px) {
-            .menu {
+            #lblResult {
                 display: none;
             }
 
-            .container-max {
-                max-width: 100% !important;
-                flex: unset !important;
-            }
-
-            .mr-max {
-                margin: 0px;
+            .navbar-brand {
+                display: block;
             }
         }
     </style>
@@ -92,8 +79,30 @@
             <img width="100%" height="150px" src="images/1674208476889.jpg" />
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12 pr-0 pl-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid container-fluid pl-0 pr-0">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a about="true" class="nav-link" aria-current="page" href="#">About</a>
+                            <a category="Tips" class="nav-link active" href="#">Tips</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </nav>
+    </div>
+
     <div class="row main-container">
-        <div class="menu col-3 mt-3">
+        <!-- <div class="menu col-3 mt-3">
             <ul class="list-group">
                 <a about="true" href="#"
                     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
@@ -105,10 +114,13 @@
                     <span class="badge badge-secondary badge-pill">1</span>
                 </a>
             </ul>
-        </div>
+        </div> -->
 
-        <div class="col-9 container-max">
-            <div class="hide row about mr-1 mr-max">
+        <div class="col-12 container-max">
+
+
+
+            <div class="hide row about mr-1 ml-1 mr-max">
                 <div class="col-12 mt-3">
                     <p class="text-left">
                         My name is Le Tuan Anh. I'm a deverloper. I'm interested in movies, music, and software
@@ -145,7 +157,7 @@
                 </div>
             </div>
 
-            <div class="search row justify-content-between mr-1 mr-max">
+            <div class="search row justify-content-between mr-1 ml-1 mr-max">
                 <div class="input-group pl-0 mt-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="lblResult"></span>
@@ -164,7 +176,7 @@
                     </div>
                 </div>
             </div>
-            <div class="list row mr-1 mr-max">
+            <div class="list row mr-1 ml-1 mr-max">
                 <table id="myTable" class="table table-bordered mt-3">
                     <thead>
                         <tr>
@@ -256,7 +268,7 @@
     function resetData() {
         $("#txtKeyword").val("");
         $("#myTable tbody tr").show();
-        $(".list-group-item").removeClass("active");
+        $(".nav-link").removeClass("active");
     }
 
     $(document).ready(function () {
@@ -278,7 +290,7 @@
             displaySearchResultSummary(totalRows, totalRows);
         });
 
-        $(".list-group-item").click(function (event) {
+        $(".nav-link").click(function (event) {
             var about = $(this).attr('about');
             if (about == 'true') {
                 $('.about').removeClass('hide');
@@ -294,7 +306,7 @@
             $("#txtKeyword").val("");
             var oldCategory = $("a.active").attr('category');
             var newCategory = $(this).attr('category');
-            $(".list-group-item").removeClass("active");
+            $(".nav-link").removeClass("active");
 
             if (oldCategory != newCategory || about == 'true') {
                 $(this).addClass("active");
