@@ -8,7 +8,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -18,11 +20,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <style>
         .no-borer {
             border-top: none !important;
@@ -46,10 +43,19 @@
 
 <body class="container">
     <div class="row">
+        <div class="col-12 pr-0">
+            <img width="100%" height="200px" src="images/1674208476889.jfif"/>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-3 mt-3">
             <ul class="list-group">
-                <a category="Messi" href="#"
+                <a about="true" href="#"
                     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    About
+                </a>
+                <a category="Messi" href="#"
+                    class="active list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     Messi
                     <span class="badge badge-secondary badge-pill">1</span>
                 </a>
@@ -61,7 +67,43 @@
             </ul>
         </div>
         <div class="col-9">
-            <div class="row justify-content-between">
+            <div class="row about d-lg-none">
+                <div class="col-12 mt-3">
+                    <p class="text-left">
+                        My name is Le Tuan Anh. I'm a deverloper. I'm interested in movies, music, and software
+                        engineering research.
+                        <span class="font-weight-bold font-italic">I am a practical person. I advocate learning and
+                            researching by doing.</span> I have been developing software
+                        since 2015, working in various industry projects as a Software Engineer.
+                    </p>
+                    <p class="text-left">
+                        My experience includes:
+                        Developing enterprise software systems and their ecosystem (i.e. services, desktop clients,
+                        mobile
+                        clients, web applications, 3rd party and legacy systems integration) using:
+                    </p>
+                    <ul>
+                        <li>Web Service SOAP, Windows Form, Windows Presentation Foundation (WPF), SQL Server.</li>
+                        <li>Java Spring, React, MongoDB, Android SDK</li>
+                        <li>.Net core, Redis, Firebase, Paypal</li>
+                        <li>MySQL, Elasticsearch</li>
+                        <li>ASP.NET Web Forms, ASP.NET MVC</li>
+                        <li>HTML, JavaScript, CSS, C#, .NET Framework</li>
+                        <li>Amazon Web Services, Azure, Entity Framework, Okta</li>
+                    </ul>
+                    <p>
+                        I welcome and appreciate any feedback and suggestions for this website. My strategy is to document some of my experiences for reference and to create a full,
+                        concrete and easy process for everyone.
+                    </p>
+                    <p>
+                        Please feel free to contact me or leave a comment if you have any questions or comments.
+                    </p>
+
+                    <p>Email: leanhcntt@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="search row justify-content-between">
                 <div class="input-group pl-0 mt-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="lblResult"></span>
@@ -80,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="list row">
                 <table id="myTable" class="table table-bordered mt-3">
                     <thead>
                         <tr>
@@ -189,17 +231,31 @@
         });
 
         $(".list-group-item").click(function (event) {
+            var about = $(this).attr('about');
+            if (about == 'true') {
+                $('.about').removeClass('d-lg-none');
+                $('.search').addClass('d-lg-none');
+                $('.list').addClass('d-lg-none');
+            }
+            else {
+                $('.about').addClass('d-lg-none');
+                $('.search').removeClass('d-lg-none');
+                $('.list').removeClass('d-lg-none');
+            }
+
             $("#txtKeyword").val("");
             var oldCategory = $("a.active").attr('category');
             var newCategory = $(this).attr('category');
-            $(".list-group-item").removeClass("active");
 
             if (oldCategory != newCategory) {
+                $(".list-group-item").removeClass("active");
                 $(this).addClass("active");
             }
 
             searchDataByCategory();
         });
+
+        searchDataByCategory();
     });
 </script>
 
