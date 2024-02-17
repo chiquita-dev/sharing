@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chiquita-dev</title>
+    <title>Chiquita</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
 
     <link rel="icon" href='images/imageonline-co-pngtoicoimage.ico' type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -96,8 +98,8 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a about="true" class="nav-link" aria-current="page" href="#">Home</a>
-                            <a class="nav-link active" href="#">All</a>
+                            <a about="true" class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" href="#">All</a>
                             <a category="Tips" class="nav-link" href="#">Tips</a>
                         </div>
                     </div>
@@ -316,6 +318,11 @@
             searchDataByCategory();
         });
 
+        if ($("a.active").attr('about') == 'true') {
+            $('.about').removeClass('hide');
+            $('.search').addClass('hide');
+            $('.list').addClass('hide');
+        }
         searchDataByCategory();
     });
 </script>
